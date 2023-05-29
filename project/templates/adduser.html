@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}
+Add User
+{% endblock %}
+
+{% block content %}
+<!-- <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div> -->
+<form action="" method="post">
+    <h3 align="center">Add User</h3>
+    <div class="form-group">
+        <label for="Name">Name</label>
+        <input type="text" name="Name" id="Name" class="form-control" placeholder="Enter Name">
+    </div>
+    <div class="form-group">
+        <label for="email">Email address</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+        <label for="city">City</label>
+        <input type="text" name="city" id="city" class="form-control" placeholder="Enter city">
+    </div>
+    <div class="form-group">
+        <label for="country">Country</label>
+        <input type="text" name="country" id="country" class="form-control" placeholder="Enter country">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

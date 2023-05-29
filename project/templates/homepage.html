@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="column left" style="background-color: antiquewhite; height: max-content;">
+        <h4>The users are from the following {{country_count}} countries:</h4>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        <!-- {% for i in range(l1) %}
+        <ul>
+            {{c2[i]}} with {{users_list_country[i]}} users from 
+            {% for j in range(l2) %}
+              {{country_dict[c2[i]][j]}}
+            {% endfor %}
+        </ul>
+        {% endfor %} -->
+    </div>
+    <div class="column right" style="background-color: aliceblue; height:max-content;">
+        <h4>The number of cities in the countries with users are:</h4>
+        <canvas id="myChart2" style="width:100%;max-width:700px"></canvas>
+        <!-- {% for i in range(l1) %}
+        <ul>
+            {{key_list[i]}}: {{country_dict[c2[i]]|length}}
+        </ul>
+        {% endfor %} -->
+        <h4>Number of tasks added within the past four days</h4>
+        <canvas id="myChart3" style="width:100%;max-width:700px"></canvas>
+        Tasks: {{past_four_days_users}}
+    </div>
+  </div>
+
+
+  
+  <script>
+    var xValues = {{key_list | safe}};
+    var yValues = {{users_list_country | safe}};
+    var barColors = [
+      "#b91d47",
+      "#00aba9",
+      "#2b5797",
+      "#e8c3b9",
+      "#1e7145"
+    ];
+    
+    new Chart("myChart", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Users per Country"
+        }
+      }
+    });
+    </script>
+
+<script>
+    var xValues = {{key_list | safe}};
+    var yValues = {{cities_by_country | safe}};
+    var barColors = [
+      "#b91d47",
+      "#00aba9",
+      "#2b5797",
+      "#e8c3b9",
+      "#1e7145"
+    ];
+    
+    new Chart("myChart2", {
+      type: "doughnut",
+      data: {
+        labels: xValues,
+        datasets: [{
+          backgroundColor: barColors,
+          data: yValues
+        }]
+      },
+      options: {
+        title: {
+          display: true,
+          text: "Cities per Country"
+        }
+      }
+    });
+    </script>
+
+  <script>
+    var xValues = {{tasks_dates | safe}};
+    var yValues = {{tasknum | safe}};
+    
+    new Chart("myChart3", {
+      type: "line",
+      data: {
+        labels: xValues,
+        datasets: [{
+          fill: false,
+          lineTension: 0,
+          backgroundColor: "rgba(0,0,255,1.0)",
+          borderColor: "rgba(0,0,255,0.1)",
+          data: yValues
+        }]
+      },
+      options: {
+        legend: {display: false},
+        
+      }
+    });
+    </script>
+  
+
+{% endblock %}
+
+
+<!-- country_dict[c2[i]]|length -->

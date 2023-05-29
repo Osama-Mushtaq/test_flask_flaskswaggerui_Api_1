@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}
+Add Tasks
+{% endblock %}
+
+{% block content %}
+<form action="" method="post">
+    <h3 align="center">Add Tasks</h3>
+    <div class="form-group">
+        <label for="uid">User ID</label>
+        <select name="uid" id="uid">
+            {% for id in ids %}
+            <option value="{{id.id}}">{{id.id}}</option>
+            {% endfor %}
+        </select>
+    </div>
+    <br>
+    <div class="form-group">
+        <label for="task">Task</label>
+        <input type="text" name="task" id="task" class="form-control" placeholder="Enter Task">
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+{% endblock %}

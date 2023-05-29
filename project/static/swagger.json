@@ -1,0 +1,123 @@
+{
+    "swagger": "2.0",
+    "basePath": "/",
+    "paths": {
+        "/": {
+            "get": {
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    }
+                },
+                "summary": "",
+                "tags": [
+                    "Homepage"
+                ]
+            }
+        },
+        "/adduser":{
+            "get":{
+                "tags": [
+                    "Add User"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Page loaded"
+                    }
+                },
+                "summary": "Get the page"
+            },
+            "post":{
+                "responses": {
+                    "201": {
+                    "description": "Created"
+                    }
+                    },
+                "tags": [
+                    "Add User"
+                ],
+                "summary":"Create a new task",
+                "parameters":[
+                    {
+                        "in":"formData",
+                        "name":"Name",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Add_user"
+                        }
+                    },
+                    {
+                        "in":"formData",
+                        "name":"email",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Add_user"
+                        }
+                    },
+                    {
+                        "in":"formData",
+                        "name":"city",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Add_user"
+                        }
+                    },
+                    {
+                        "in":"formData",
+                        "name":"country",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/Add_user"
+                        }
+                    }
+                ]
+            }
+        }
+    },
+    "info": {
+        "title": "Task Master API",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "definitions": {
+        "Add_user": {
+            "required": [
+                "name","email","city","country"
+            ],
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "The task unique identifier",
+                    "readOnly": true
+                },
+                "name": {
+                    "type": "string",
+                    "description":"user name"
+                },
+                "email": {
+                    "type": "string",
+                    "description":"user email"
+                },
+                "city": {
+                    "type": "string",
+                    "description":"user city"
+                },
+                "country": {
+                    "type": "string",
+                    "description":"user country"
+                }
+            },
+            "type": "object"
+        }
+    },
+    "responses": {
+        "ParseError": {
+            "description": "When a mask can't be parsed"
+        },
+        "MaskError": {
+            "description": "When any error occurs on mask"
+        }
+    }
+}
